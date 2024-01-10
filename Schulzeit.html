@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schulabschluss Countdown</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body onload="calculateDays()" style="background-color: rgb(19, 19, 19); color: rgb(209, 209, 209); text-align: center;">    
+
+    <br>
+    <img src="https://i.imgur.com/ze9ds15.png" style="width: 300px;" alt="">
+
+    <div id="d1">            
+        <strong>Nie wieder "Unterricht" in</strong>
+        <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalDaysUnterrichtsende"></span></strong> Tage, bzw.</p>
+        <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="schoolDays"></span></strong> Schultage (ohne heute)!</p>
+        <p>Noch <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalTests"></span></strong> Teste bis Semester</p>
+        <hr>
+        <br>
+        <strong>Endlich Freiheit in ...</strong>
+        <p><strong style="font-size: x-large; color: mediumseagreen"><span id="totalDays"></span></strong> Tage (ohne heute)!</p>
+        <br>
+        <hr>
+        <br>
+        <strong>Und wennis gor nimma dowortisch ...</strong>
+        <p>Nie wieder Unterricht in<br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalSecondsUnterrichtsende"></span></strong> Sekunden!<br><br>Prozent abgeschlossen:<br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalProzentUnterrichtsende"></span></strong></p><br>
+        <p>Freiheit in<br><strong style="font-size: x-large; color: mediumseagreen;"><span id="totalSecondsEndeKomplett"></span></strong> Sekunden!<br><br>Prozent abgeschlossen:<br><strong style="font-size: x-large; color: mediumseagreen;"><span id="totalProzentEndeKomplett"></span></strong></p>
+        <br>
+        <hr>
+        <br>
+
+        <strong id="AktuelleTemperaturUeberschrift">Lade Temperatur ...</strong><br><br>
+        <!--<canvas id="croppedCanvas"></canvas>-->                
+        <hr><br>
+        <strong id="AktuellesWetterUeberschrift">Lade Wetter ...</strong><br><br><br>
+        <br>
+    </div>
+
+    <div id="d2" style="display: none;">
+        <br><br><br>
+        <p><strong style="font-size: x-large; color: mediumseagreen"><span id="totalDays">GRATULIERE!<br><br></span></strong>Hitz hoschis endlich umma! Und hitz schau zui endlich ausnzikemm fa der elendigen Drecksbude fa dem gschissenen Clownsverein fa dem goschtign!!</p>
+    </div>
+    <br>
+
+    
+</body>
+</html>
+
+
+<script>
+    document.body.style.fontFamily = 'Russo One, sans-serif';
+
+    GetTemperature();
+
+    function GetTemperature()
+    {
+        try
+        {
+            $.ajax({
+                url: `https://api.openweathermap.org/data/2.5/weather?q=Heinfels&appid=1c1af50c43608a0fcc80ed2ec537cb09&units=metric`,
+                method: 'GET',
+                success: function(data)
+                {
+                    var temperatureOpenweathermap = data.main.temp;
+                    var temperature = (Math.abs(temperatureOpenweathermap)).toFixed(1);
+
+                    if(temperatureOpenweathermap < 0)
+                    {
+                        temperature *= -1;
+                    }
+
+                    document.getElementById("AktuelleTemperaturUeberschrift").innerHTML = `Aktuelle Temperatur in Heinfels:<br><strong style="font-size: x-large; color: rgb(168, 50, 000);"><span>${temperature}</span></strong> °C<br>`;
+
+                    var WeatherCode = data.weather[0].id.toString();
+                    var Wetterbeschreibung = "Was i nit";
+                    var WetterbildURL = "";
+
+                    if(WeatherCode.toLowerCase().startsWith("2"))
+                    {
+                        Wetterbeschreibung = "Kurzschlusswetter";
+                        WetterbildURL = "http://openweathermap.org/img/wn/11d@2x.png";
+
+                    }
+                    else if(WeatherCode.toLowerCase().startsWith("3"))
+                    {
+                        Wetterbeschreibung = "Et tut Nieselregnen";
+                        WetterbildURL = "http://openweathermap.org/img/wn/10d@2x.png";
+                    }
+                    else if(WeatherCode.toLowerCase().startsWith("5"))
+                    {
+                        Wetterbeschreibung = "Es Regnet";
+                        WetterbildURL = "http://openweathermap.org/img/wn/10d@2x.png";
+                    }
+                    else if(WeatherCode.toLowerCase().startsWith("6"))
+                    {
+                        Wetterbeschreibung = "Jawoll es Schneit";
+                        WetterbildURL = "http://openweathermap.org/img/wn/13d@2x.png";
+                    }
+                    else if(WeatherCode.toLowerCase().startsWith("7"))
+                    {
+                        Wetterbeschreibung = "Es isch Nebel";
+                        WetterbildURL = "http://openweathermap.org/img/wn/50d@2x.png";                        
+                    }
+                    else if(WeatherCode.toLowerCase().startsWith("800"))
+                    {
+                        Wetterbeschreibung = "Sonnenschwein";
+                        WetterbildURL = "http://openweathermap.org/img/wn/01d@2x.png";
+                    }
+                    else if(WeatherCode.toLowerCase().startsWith("80"))
+                    {
+                        Wetterbeschreibung = "Wolkig";
+                        WetterbildURL = "http://openweathermap.org/img/wn/02d@2x.png";
+                    }
+
+
+                    document.getElementById("AktuellesWetterUeberschrift").innerHTML = `Aktuelles Wetter in Heinfels:<br><br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${Wetterbeschreibung}</span></strong><br>
+                    
+                    <img src="${WetterbildURL}" alt="Wetterbild">
+
+                    `;
+
+                    
+                    
+                    var HeutigesDatum = new Date();
+                    if(HeutigesDatum.getDay() != 0 && HeutigesDatum.getDay() != 6)
+                    {
+                        if(temperature <= -14)
+                        {
+                            document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Das bedeutet:<br>Heute <strong style="font-size: x-large; color: mediumseagreen;"><span>Schulfrei</span></strong> !<br>`;
+                        }
+                        else
+                        {
+                            document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Das bedeutet:<br>Heute <strong style="font-size: x-large; color: rgb(218, 44, 0);"><span>leider Schule</span></strong> !<br>`;
+                        }
+                    }        
+                    else
+                    {
+                        //document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Heint isch <strong style="font-size: x-large; color: mediumseagreen;"><span>Wochenende</span></strong> !<br>`;                        
+                    }            
+                },
+                error: function(error) {
+                    console.error('Fehler bei der API-Anfrage:', error);
+                }
+            });
+
+            /*
+            const originalImage = new Image();
+            originalImage.src = 'https://www.megacam.at/webcam/sillian/current/1200.jpg';
+
+            // Das Canvas-Element
+            const canvas = document.getElementById('croppedCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Warte auf das Laden des Bildes
+            originalImage.onload = function() {
+                // Die Koordinaten und die Größe des auszuschneidenden Rechtecks
+                const cropX = 161;
+                const cropY = 25;
+                const cropWidth = 300;
+                const cropHeight = 20;
+
+                // Setze die Größe des Canvas entsprechend der Größe des Ausschnitts
+                canvas.width = cropWidth;
+                canvas.height = cropHeight;
+
+                // Zeichne das ausgeschnittene Rechteck auf das Canvas
+                ctx.drawImage(originalImage, cropX, cropY, cropWidth, cropHeight, 0, 0, cropWidth, cropHeight);
+                document.getElementById("AktuelleTemperaturUeberschrift").innerHTML = "Aktuelle Temperatur in Sillian";
+                document.getElementById("AktuelleTemperaturUeberschrift").style.color = "rgb(209, 209, 209)";
+            };
+            */
+        }
+        catch (error)
+        {
+            document.getElementById("AktuelleTemperaturUeberschrift").innerHTML = "TEMPERATUR ABFRAGE FEHLGESCHAGEN!";
+            document.getElementById("AktuelleTemperaturUeberschrift").style.color = "rgb(138, 46, 46)";
+        }
+        
+
+    }
+
+
+    function calculateDays()
+    {
+        // Daten für freie Tage und Tests
+        var holidays = ["12/08/2023", "12/25/2023", "12/26/2023", "12/27/2023", "12/28/2023", "12/29/2023", "01/01/2024", "01/02/2024", "01/03/2024", "01/04/2024", "01/05/2024", "02/12/2024", "02/13/2024", "02/14/2024", "02/15/2024", "02/16/2024", "03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024"];
+        var tests = ["11/07/2023", "11/09/2023", "11/14/2023", "11/30/2023", "12/14/2023", "12/18/2023", "01/09/2024", "01/16/2024", "01/18/2024", "01/23/2024"];
+
+        // Aktuelles Datum
+        var currentDate = new Date();
+
+
+        // Ziel-Datum für den Schulabschluss
+        var endDate = new Date(2024, 06-1, 14, 00,00,00);//new Date("06/14/2024");
+
+        // Berechnung der Tage, Schultage und Tests
+        var totalDays = Math.floor((endDate - currentDate) / (1000 * 60 * 60 * 24)) + 1;
+        
+        if(totalDays < 0)
+        {
+            totalDays = 0;
+        }
+
+        var totalTests = 0;
+        var totalDaysUnterrichtsende = totalDays - 49;
+        var schoolDays = totalDaysUnterrichtsende;
+
+        if(schoolDays < 0)
+        {
+            schoolDays = 0;
+            totalDaysUnterrichtsende = 0;
+        }
+        else
+        {
+            var AnzahlWochenendtage = 0;
+            
+            for (var i = 1; i <= schoolDays; i++)
+            {         
+                var EntsprechenderTag = new Date(currentDate);
+                EntsprechenderTag.setDate(currentDate.getDate() + i);
+                
+                if(EntsprechenderTag.getDay() == 0 || EntsprechenderTag.getDay() == 6)
+                {
+                    AnzahlWochenendtage++;
+                }           
+            }
+
+            schoolDays -= AnzahlWochenendtage;
+
+            for (var i = 0; i < holidays.length; i++)
+            {
+                var holiday = new Date(holidays[i]);
+                if (holiday >= currentDate && holiday <= endDate && (holiday.getDay() !== 0 && holiday.getDay() !== 6))
+                {
+                    schoolDays--;
+                }
+            }
+
+            for (var j = 0; j < tests.length; j++)
+            {
+                var testDate = new Date(tests[j]);
+                if (testDate >= currentDate && testDate <= endDate)
+                {                    
+                    if (testDate.getDay() !== 0 && testDate.getDay() !== 6)
+                    {
+                        totalTests++;
+                    }
+                }
+            }
+        }
+
+        
+
+        // Anzeige der Ergebnisse
+        document.getElementById("totalDays").textContent = totalDays;
+        document.getElementById("schoolDays").textContent = schoolDays;
+        document.getElementById("totalTests").textContent = totalTests;
+        document.getElementById("totalDaysUnterrichtsende").textContent = totalDaysUnterrichtsende;
+    }
+
+    var EndeKomplett = new Date(2024, 6-1, 14, 19,00,00);
+    var EndeSchule = new Date(2024, 4-1, 26, 08,50,00);
+
+    function Div10ms()
+    {            
+        var SekundenBisUnterrichtsende = (Math.round(((EndeSchule.getTime() - new Date().getTime()) / 1000) * 100) / 100);
+
+        if(SekundenBisUnterrichtsende < 0)
+        {
+            SekundenBisUnterrichtsende = 0;
+        }
+
+        var SekundenBisFreiheit = (Math.round(((EndeKomplett.getTime() - new Date().getTime()) / 1000) * 100) / 100);
+        document.getElementById("totalSecondsUnterrichtsende").innerHTML = Math.floor(SekundenBisUnterrichtsende).toLocaleString('de-DE');//.replace(/\./g, " . ");
+        document.getElementById("totalSecondsEndeKomplett").innerHTML = Math.floor(SekundenBisFreiheit).toLocaleString('de-DE');//.replace(/\./g, " . ");
+        
+
+        if(SekundenBisFreiheit < 0)
+        {
+            document.getElementById("d2").style.display = "anzeigen";
+            document.getElementById("d1").style.display = "none";
+        }
+        var SekundenSchuljahrUnterrichtszeit = (Math.round(((EndeSchule.getTime() - new Date(2023, 09-1, 11, 08,00,00).getTime()) / 1000) * 100) / 100);
+        var SekundenSchuljahrKomplett = (Math.round(((EndeKomplett.getTime() - new Date(2023, 09-1, 11, 08,00,00).getTime()) / 1000) * 100) / 100);
+        var totalProzentUnterrichtsende = SekundenBisUnterrichtsende / SekundenSchuljahrUnterrichtszeit;
+
+        var totalProzentEndeKomplett =  SekundenBisFreiheit / SekundenSchuljahrKomplett;
+
+        document.getElementById("totalProzentUnterrichtsende").innerHTML = `${((1 - totalProzentUnterrichtsende) * 100).toFixed(5)}%`;     
+        document.getElementById("totalProzentEndeKomplett").innerHTML = `${((1 - totalProzentEndeKomplett) * 100).toFixed(5)}%`;
+    }
+
+    setInterval(Div10ms, 10);
+</script>
+
+
+<!-- Bitte erstellen Sie für mich eine einfache Webseite mit einer einzigen Seite und einer einzigen Datei.
+
+In dieser Webseite möchte ich darstellen wie lange es noch bis zu meinem Schulabschluss dauert.
+Der letzte Unterrichtstag ist am 26.04.2024, dann dauert es noch bis zum 14.06.2024 bis auch die Matura abgeschlossen ist.
+
+Desweiteren ist am 23.11.2023 und am 24.11.2023 und am 08.12.2023 und vom 25.12.2023 bis 29.12.2023 und vom 01.01.2024 - 05.01.2024 und vom 12.02.2024 - 16.02.2024 und vom 18.03.2024 - 19.03.2024 und vom 25.03.2024 - 29.03.2024 und am 01.04.2024 Schulfrei.
+Desweiteren ist auch jedes Wochenende (Samstag und Sonntag) schulfrei.
+
+Desweiteren findet am 07.11.2023 und 09.11.2023 und 14.11.2023 und 30.11.2023 und 14.12.2023 und 18.12.2023 und 09.01.2024 und 16.01.2024 und 18.01.2024 und 23.01.2024 ein Test statt.
+Ein Test-Tag ist kein freier Tag sondern ein normaler Schultag, an dem halt eben zusätzlich ein Test stattfindet.
+
+Das heißt jetzt konkret, dass ich gerne eine Webseite hätte die mir darstellt:
+1) wie viele Tage (inklusive freie Tage) es noch sind bis zum Unterrichtsende bzw. gesamten Ende (ab dem Aktuellen Datum)
+2) wie viele Schultage (ohne freie Tage) es noch sind bis zum Unterrichtsende bzw. gesamten Ende (ab dem Aktuellen Datum)
+3) wie viele Teste (ab dem Aktuellen Datum) es noch sind bis zum Unterrichtsende bzw. gesamten Ende
+
+Bitte stellen Sie diese Informtaionen übersichtlich in einem einfachen HTML Dokument dar. -->
