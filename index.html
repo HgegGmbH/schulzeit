@@ -21,7 +21,7 @@
         <p>Noch <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalTests"></span></strong> Teste bis Semester</p>
         <hr>
         <br>
-        <strong>Endlich Freiheit in ...</strong>
+        <strong>Freiheit in ...</strong>
         <p><strong style="font-size: x-large; color: mediumseagreen"><span id="totalDays"></span></strong> Tage (ohne heute)!</p>
         <br>
         <hr>
@@ -115,6 +115,8 @@
                         Wetterbeschreibung = "Wolkig";
                         WetterbildURL = "http://openweathermap.org/img/wn/02d@2x.png";
                     }
+                    
+                    WetterbildURL = `http://openweathermap.org/img/wn/${data.weather[0].icon.toString()}@2x.png`;
 
 
                     document.getElementById("AktuellesWetterUeberschrift").innerHTML = `Aktuelles Wetter in Heinfels:<br><br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${Wetterbeschreibung}</span></strong><br>
@@ -128,7 +130,7 @@
                     var HeutigesDatum = new Date();
                     if(HeutigesDatum.getDay() != 0 && HeutigesDatum.getDay() != 6)
                     {
-                        if(temperature <= -14)
+                        if(temperature <= -10)
                         {
                             document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Das bedeutet:<br>Heute <strong style="font-size: x-large; color: mediumseagreen;"><span>Schulfrei</span></strong> !<br>`;
                         }
@@ -187,8 +189,8 @@
     function calculateDays()
     {
         // Daten für freie Tage und Tests
-        var holidays = ["12/08/2023", "12/25/2023", "12/26/2023", "12/27/2023", "12/28/2023", "12/29/2023", "01/01/2024", "01/02/2024", "01/03/2024", "01/04/2024", "01/05/2024", "02/12/2024", "02/13/2024", "02/14/2024", "02/15/2024", "02/16/2024", "03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024"];
-        var tests = ["11/07/2023", "11/09/2023", "11/14/2023", "11/30/2023", "12/14/2023", "12/18/2023", "01/09/2024", "01/16/2024", "01/18/2024", "01/23/2024"];
+        var holidays = ["01/24/2024", "02/02/2024", "02/12/2024", "02/13/2024", "02/14/2024", "02/15/2024", "02/16/2024", "02/19/2024", "02/20/2024", "02/21/2024", "03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "12/06/2023"];
+        var tests = ["01/23/2024", "01/25/2024", "01/29/2024"];
 
         // Aktuelles Datum
         var currentDate = new Date();
