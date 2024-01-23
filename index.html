@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3133/3133158.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3133/3133158.png" type="image/x-icon">
 </head>
 <body onload="calculateDays()" style="background-color: rgb(19, 19, 19); color: rgb(209, 209, 209); text-align: center;">    
 
@@ -189,8 +191,8 @@
     function calculateDays()
     {
         // Daten für freie Tage und Tests
-        var holidays = ["01/24/2024", "02/02/2024", "02/12/2024", "02/13/2024", "02/14/2024", "02/15/2024", "02/16/2024", "02/19/2024", "02/20/2024", "02/21/2024", "03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "12/06/2023"];
-        var tests = ["01/23/2024", "01/25/2024", "01/29/2024"];
+        var holidays = ["01/22/2024", "02/02/2024", "02/12/2024", "02/13/2024", "02/14/2024", "02/15/2024", "02/16/2024", "02/19/2024", "02/20/2024", "02/21/2024", "03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "12/06/2023"];
+        var tests = ["01/23/2024", "01/25/2024", "01/30/2024", "02/01/2024", "02/06/2024"];
 
         // Aktuelles Datum
         var currentDate = new Date();
@@ -264,7 +266,7 @@
         document.getElementById("totalDaysUnterrichtsende").textContent = totalDaysUnterrichtsende;
     }
 
-    var EndeKomplett = new Date(2024, 6-1, 14, 19,00,00);
+    var EndeKomplett = new Date(2024, 6-1, 14, 19, 00, 00);
     var EndeSchule = new Date(2024, 4-1, 26, 08,50,00);
 
     function Div10ms()
