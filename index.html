@@ -11,7 +11,7 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3133/3133158.png" type="image/x-icon">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3133/3133158.png" type="image/x-icon">
 </head>
-<body onload="calculateDays()" style="background-color: rgb(19, 19, 19); color: rgb(209, 209, 209); text-align: center;">    
+<body onload="calculateDays()" style="background-color: rgb(19, 19, 19); color: rgb(209, 209, 209); text-align: center;" id="body">    
 
     <br>
     <img src="https://i.imgur.com/ze9ds15.png" style="width: 300px;" alt="">
@@ -192,14 +192,14 @@
     {
         // Daten für freie Tage und Tests
         var holidays = ["01/22/2024", "02/02/2024", "02/12/2024", "02/13/2024", "02/14/2024", "02/15/2024", "02/16/2024", "02/19/2024", "02/20/2024", "02/21/2024", "03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "12/06/2023"];
-        var tests = ["01/23/2024", "01/25/2024", "01/30/2024", "02/01/2024", "02/06/2024"];
+        var tests = ["01/30/2024", "02/06/2024"];
 
         // Aktuelles Datum
         var currentDate = new Date();
 
 
         // Ziel-Datum für den Schulabschluss
-        var endDate = new Date(2024, 06-1, 14, 00,00,00);//new Date("06/14/2024");
+        var endDate = new Date(2024, 6-1, 14, 0,0,0);//new Date("06/14/2024");
 
         // Berechnung der Tage, Schultage und Tests
         var totalDays = Math.floor((endDate - currentDate) / (1000 * 60 * 60 * 24)) + 1;
@@ -254,20 +254,24 @@
                         totalTests++;
                     }
                 }
+
+                if(testDate.getDate() == currentDate.getDate() && testDate.getMonth() == currentDate.getMonth())
+                {
+                    document.body.style.backgroundColor = "rgb(100, 10, 10)"
+                }
             }
         }
 
-        
-
         // Anzeige der Ergebnisse
         document.getElementById("totalDays").textContent = totalDays;
-        document.getElementById("schoolDays").textContent = schoolDays;
+        GesamtAnzahlSchultage = schoolDays;
+        //document.getElementById("schoolDays").textContent = schoolDays;
         document.getElementById("totalTests").textContent = totalTests;
         document.getElementById("totalDaysUnterrichtsende").textContent = totalDaysUnterrichtsende;
     }
 
-    var EndeKomplett = new Date(2024, 6-1, 14, 19, 00, 00);
-    var EndeSchule = new Date(2024, 4-1, 26, 08,50,00);
+    var EndeKomplett = new Date(2024, 6-1, 14, 19, 0, 0);
+    var EndeSchule = new Date(2024, 4-1, 26, 8,50,0);
 
     function Div10ms()
     {            
@@ -288,8 +292,8 @@
             document.getElementById("d2").style.display = "anzeigen";
             document.getElementById("d1").style.display = "none";
         }
-        var SekundenSchuljahrUnterrichtszeit = (Math.round(((EndeSchule.getTime() - new Date(2023, 09-1, 11, 08,00,00).getTime()) / 1000) * 100) / 100);
-        var SekundenSchuljahrKomplett = (Math.round(((EndeKomplett.getTime() - new Date(2023, 09-1, 11, 08,00,00).getTime()) / 1000) * 100) / 100);
+        var SekundenSchuljahrUnterrichtszeit = (Math.round(((EndeSchule.getTime() - new Date(2023, 9-1, 11, 8,0,0).getTime()) / 1000) * 100) / 100);
+        var SekundenSchuljahrKomplett = (Math.round(((EndeKomplett.getTime() - new Date(2023, 9-1, 11, 8,0,0).getTime()) / 1000) * 100) / 100);
         var totalProzentUnterrichtsende = SekundenBisUnterrichtsende / SekundenSchuljahrUnterrichtszeit;
 
         var totalProzentEndeKomplett =  SekundenBisFreiheit / SekundenSchuljahrKomplett;
@@ -297,8 +301,29 @@
         document.getElementById("totalProzentUnterrichtsende").innerHTML = `${((1 - totalProzentUnterrichtsende) * 100).toFixed(5)}%`;     
         document.getElementById("totalProzentEndeKomplett").innerHTML = `${((1 - totalProzentEndeKomplett) * 100).toFixed(5)}%`;
     }
+    setInterval(Div10ms, 5);
 
-    setInterval(Div10ms, 10);
+    var GesamtAnzahlSchultage = 0;
+    var AktuellerZaehlerAbwaertsSchultage = GesamtAnzahlSchultage + 120;
+
+
+    let interval = 50;
+    function AbwaertsZaehler()
+    {
+        if(AktuellerZaehlerAbwaertsSchultage > GesamtAnzahlSchultage)
+        {
+            AktuellerZaehlerAbwaertsSchultage -= 1;
+            document.getElementById("schoolDays").textContent = AktuellerZaehlerAbwaertsSchultage;  
+        }
+
+
+        interval += 3;
+
+        clearInterval(intervalId);
+        intervalId = setInterval(AbwaertsZaehler, interval);
+    }
+    let intervalId = setInterval(AbwaertsZaehler, interval);
+    
 </script>
 
 
