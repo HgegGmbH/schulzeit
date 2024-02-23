@@ -20,7 +20,7 @@
         <strong>Nie wieder "Unterricht" in</strong>
         <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalDaysUnterrichtsende"></span></strong> Tage, bzw.</p>
         <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="schoolDays"></span></strong> Schultage (ohne heute)!</p>
-        <p>Noch <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalTests"></span></strong> Teste bis Semester</p>
+        <p>Noch <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalTests"></span></strong> Teste bis zur Freiheit!</p>
         <hr>
         <br>
         <strong>Freiheit in ...</strong>
@@ -40,6 +40,8 @@
         <hr><br>
         <strong id="AktuellesWetterUeberschrift">Lade Wetter ...</strong><br><br><br>
         <br>
+        <strong id="StuetzeThurntalerInfo">Abschnitt:</strong>
+        <br><br><br><br>
     </div>
 
     <div id="d2" style="display: none;">
@@ -75,7 +77,7 @@
                         temperature *= -1;
                     }
 
-                    document.getElementById("AktuelleTemperaturUeberschrift").innerHTML = `Aktuelle Temperatur in Heinfels:<br><strong style="font-size: x-large; color: rgb(168, 50, 000);"><span>${temperature}</span></strong> °C<br>`;
+                    document.getElementById("AktuelleTemperaturUeberschrift").innerHTML = `Aktuelle Temperatur in Heinfels:<br><strong style="font-size: x-large; color: rgb(168, 50, 000);"><span>${temperature}</span></strong> °C`;
 
                     var WeatherCode = data.weather[0].id.toString();
                     var Wetterbeschreibung = "Was i nit";
@@ -94,7 +96,7 @@
                     }
                     else if(WeatherCode.toLowerCase().startsWith("5"))
                     {
-                        Wetterbeschreibung = "Es Regnet";
+                        Wetterbeschreibung = "Es Schifft";
                         WetterbildURL = "http://openweathermap.org/img/wn/10d@2x.png";
                     }
                     else if(WeatherCode.toLowerCase().startsWith("6"))
@@ -104,7 +106,7 @@
                     }
                     else if(WeatherCode.toLowerCase().startsWith("7"))
                     {
-                        Wetterbeschreibung = "Es isch Nebel";
+                        Wetterbeschreibung = "Siegsch nix";
                         WetterbildURL = "http://openweathermap.org/img/wn/50d@2x.png";                        
                     }
                     else if(WeatherCode.toLowerCase().startsWith("800"))
@@ -125,20 +127,18 @@
                     
                     <img src="${WetterbildURL}" alt="Wetterbild">
 
-                    `;
-
-                    
-                    
+                    `;                   
+                                        
                     var HeutigesDatum = new Date();
                     if(HeutigesDatum.getDay() != 0 && HeutigesDatum.getDay() != 6)
                     {
                         if(temperature <= -10)
                         {
-                            document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Das bedeutet:<br>Heute <strong style="font-size: x-large; color: mediumseagreen;"><span>Schulfrei</span></strong> !<br>`;
+                            //document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Das bedeutet:<br>Heute <strong style="font-size: x-large; color: mediumseagreen;"><span>Schulfrei</span></strong> !<br>`;
                         }
                         else
                         {
-                            document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Das bedeutet:<br>Heute <strong style="font-size: x-large; color: rgb(218, 44, 0);"><span>leider Schule</span></strong> !<br>`;
+                            //document.getElementById("AktuelleTemperaturUeberschrift").innerHTML += `<br><br>Das bedeutet:<br>Heute <strong style="font-size: x-large; color: rgb(218, 44, 0);"><span>leider Schule</span></strong> !<br>`;
                         }
                     }        
                     else
@@ -192,7 +192,7 @@
     {
         // Daten für freie Tage und Tests
         var holidays = ["01/22/2024", "02/01/2024", "02/02/2024", "02/12/2024", "02/13/2024", "02/14/2024", "02/15/2024", "02/16/2024", "02/19/2024", "02/20/2024", "02/21/2024", "03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "12/06/2023"];
-        var tests = ["01/30/2024", "02/06/2024"];
+        var tests = ["02/28/2024", "02/29/2024", "03/11/2024", "03/14/2024", "03/21/2024", "04/03/2024", "04/10/2024", "04/16/2024"];
 
         // Aktuelles Datum
         var currentDate = new Date();
@@ -298,8 +298,58 @@
 
         var totalProzentEndeKomplett =  SekundenBisFreiheit / SekundenSchuljahrKomplett;
 
-        document.getElementById("totalProzentUnterrichtsende").innerHTML = `${((1 - totalProzentUnterrichtsende) * 100).toFixed(5)}%`;     
+        var ProzentInNormalformUnterrichtsende = ((1 - totalProzentUnterrichtsende) * 100).toFixed(5);
+        document.getElementById("totalProzentUnterrichtsende").innerHTML = `${ProzentInNormalformUnterrichtsende}%`;     
         document.getElementById("totalProzentEndeKomplett").innerHTML = `${((1 - totalProzentEndeKomplett) * 100).toFixed(5)}%`;
+
+        var Liftmeter = 3365.0 * ProzentInNormalformUnterrichtsende / 100.0;
+        var NaechsteStuetze = "01";
+        var NaechsteStuetzeMeter = 0;
+
+        if(Liftmeter <= 2350)
+        {
+            NaechsteStuetze = "17";
+            NaechsteStuetzeMeter = 2350 - Liftmeter;
+        }
+        else if(Liftmeter <= 2563)
+        {
+            NaechsteStuetze = "18";
+            NaechsteStuetzeMeter = 2563 - Liftmeter;
+        }
+        else if(Liftmeter <= 2711)
+        {
+            NaechsteStuetze = "19";
+            NaechsteStuetzeMeter = 2711 - Liftmeter;
+        }
+        else if(Liftmeter <= 3010)
+        {
+            NaechsteStuetze = "20";
+            NaechsteStuetzeMeter = 3010 - Liftmeter;
+        }
+        else if(Liftmeter <= 3091)
+        {
+            NaechsteStuetze = "21";
+            NaechsteStuetzeMeter = 3091 - Liftmeter;
+        }
+        else if(Liftmeter <= 3336)
+        {
+            NaechsteStuetze = "22.1";
+            NaechsteStuetzeMeter = 3336 - Liftmeter;
+        }
+        else if(Liftmeter <= 3343)
+        {
+            NaechsteStuetze = "22.2";
+            NaechsteStuetzeMeter = 3343 - Liftmeter;
+        }
+        else
+        {
+            NaechsteStuetze = "Bergstation erreicht!";
+            NaechsteStuetzeMeter = 0;
+        }
+
+        NaechsteStuetzeMeter = NaechsteStuetzeMeter.toFixed(3);
+
+        document.getElementById("StuetzeThurntalerInfo").innerHTML = `<strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>Abschnitte:</span></strong><br><br>Aktuelle Position: zwischen <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${GetVorherigeStuetze(NaechsteStuetze)}</span></strong> und <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${NaechsteStuetze}</span></strong><br>Meter bis zum Erreichen: <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${NaechsteStuetzeMeter}</span></strong>`;
     }
     setInterval(Div10ms, 5);
 
@@ -323,6 +373,34 @@
         intervalId = setInterval(AbwaertsZaehler, interval);
     }
     let intervalId = setInterval(AbwaertsZaehler, interval);
+
+    function GetVorherigeStuetze(aktuell)
+    {
+        if(aktuell == "22.2")
+        {
+            return "22.1"
+        }
+        else if(aktuell == "22.1")
+        {
+            return "21"
+        }
+        else if(aktuell == "21")
+        {
+            return "20"
+        }
+        else if(aktuell == "20")
+        {
+            return "19"
+        }
+        else if(aktuell == "19")
+        {
+            return "18"
+        }
+        else if(aktuell == "18")
+        {
+            return "17"
+        }
+    }
     
 </script>
 
