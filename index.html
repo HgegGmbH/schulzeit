@@ -38,10 +38,33 @@
         <strong id="AktuelleTemperaturUeberschrift">Lade Temperatur ...</strong><br><br>
         <!--<canvas id="croppedCanvas"></canvas>-->                
         <hr><br>
-        <strong id="AktuellesWetterUeberschrift">Lade Wetter ...</strong><br><br><br>
-        <br>
+        <strong id="AktuellesWetterUeberschrift">Lade Wetter ...</strong>
+        <br><hr><br>
         <strong id="StuetzeThurntalerInfo">Abschnitt:</strong>
-        <br><br><br><br>
+        <br><br>
+        
+        
+        <hr><br>
+
+        <strong>Einzelne Schulstunden bis zum Unterrichtsende:</strong><br><br>
+        Stunden in Deutsch: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_D_Label"></span>?</strong><br>
+        Stunden in BESP: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_BESP_Label"></span>?</strong><br>
+        Stunden in MEEM: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_MEEM_Label"></span>?</strong><br>
+        Stunden in ELV: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ELV_Label"></span>?</strong><br>
+        Stunden in ELV Nachmittag: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ELV_NM_Label"></span>?</strong><br>
+        Stunden in MTSA: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_MTSA_Label"></span>?</strong><br>
+        Stunden in AIIT: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_AIIT_Label"></span>?</strong><br>
+        Stunden in RK: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_RK_Label"></span>?</strong><br>
+        Stunden in ETE GirN: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ETE_GirN_Label"></span>?</strong><br>
+        Stunden in ETE DurP: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ETE_DurP_Label"></span>?</strong><br>
+        Stunden in Englisch: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_E_Label"></span>?</strong><br>
+        Stunden in Mathe: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_AM_Label"></span>?</strong><br>
+        Stunden in KOP: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_KOP_Label"></span>?</strong><br>
+        Stunden in FTBT: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_FTBT_Label"></span>?</strong><br>
+        Stunden in WEPT: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_WEPT_Label"></span>?</strong><br>
+        Stunden in WIR: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_WIR_Label"></span>?</strong><br>
+
+        <br><br><br><br><br><br>
     </div>
 
     <div id="d2" style="display: none;">
@@ -187,15 +210,77 @@
 
     }
 
+    // Daten für freie Tage und Tests
+    var holidays = ["03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "04/08/2024", "04/12/2024", "04/15/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024", "04/26/2024"];
+    var tests = ["03/14/2024", "03/21/2024", "04/03/2024", "04/10/2024", "04/15/2024"];
+
+    var Stunden_D = ["03/11/2024 11:40", "03/13/2024 12:35", "03/20/2024 12:35", "04/03/2024 12:35", "04/10/2024 12:35", "04/17/2024 12:35"];
+    var Stunden_BESP = ["03/11/2024 14:15", "03/11/2024 15:05"];
+    var Stunden_WIR = ["04/02/2024 09:40", "04/09/2024 09:40", "04/16/2024 09:40"];
+    var Stunden_MEEM = ["03/21/2024 12:35", "04/02/2024 08:50", "04/04/2024 12:35", "04/09/2024 08:50", "04/11/2024 12:35", "04/16/2024 08:50", "04/18/2024 12:35"];
+    var Stunden_ELV = ["03/12/2024 10:35", "04/02/2024 10:35", "04/09/2024 10:35", "04/16/2024 10:35"];
+    var Stunden_ELV_NM = ["03/21/2024 14:15", "03/21/2024 15:05", "04/04/2024 14:15", "04/04/2024 15:05", "04/18/2024 14:15", "04/18/2024 15:05"];
+    var Stunden_MTSA = ["03/12/2024 11:40", "03/13/2024 08:50", "03/20/2024 08:50", "01/04/2024 11:40", "04/03/2024 08:50", "04/09/2024 11:40", "04/10/2024 08:50", "04/16/2024 11:40", "04/17/2024 08:50"];
+    var Stunden_AIIT = ["03/14/2024 10:35", "03/21/2024 10:35", "04/02/2024 12:35", "04/04/2024 10:35", "04/09/2024 12:35", "04/11/2024 10:35", "04/16/2024 12:35", "04/18/2024 10:35"];
+    var Stunden_RK = ["03/12/2024 13:25", "04/02/2024 13:25", "04/08/2024 09:40", "04/09/2024 13:25", "04/15/2024 09:40", "04/16/2024 13:25"];
+    var Stunden_ETE_GirN = ["03/13/2024 09:40", "03/20/2024 09:40", "04/03/2024 09:40", "04/10/2024 09:40", "04/17/2024 09:40"];
+    var Stunden_ETE_DurP = ["03/14/2024 11:40", "03/21/2024 11:40", "04/04/2024 11:40", "04/11/2024 11:40", "0/18/2024 11:40"];
+    var Stunden_E = ["03/12/2024 12:35", "03/13/2024 10:35", "03/20/2024 10:35", "03/21/2024 08:50", "03/21/2024 09:40", "03/21/2024 10:35", "04/03/2024 10:35", "04/10/2024 10:35", "04/17/2024 10:35"];
+    var Stunden_AM = ["03/13/2024 11:40", "03/14/2024 08:50", "03/20/2024 11:40", "04/03/2024 11:40", "04/04/2024 08:50", "04/10/2024 11:40", "04/11/2024 08:50", "04/17/2024 11:40", "04/18/2024 08:50"];
+    var Stunden_KOP  = ["03/13/2024 14:15", "03/13/2024 15:05", "03/13/2024 16:05", "03/13/2024 16:55",
+                        "03/20/2024 14:15", "03/20/2024 15:05", "03/20/2024 16:05", "03/20/2024 16:55",
+                        "04/03/2024 14:15", "04/03/2024 15:05", "04/03/2024 16:05", "04/03/2024 16:55",
+                        "04/10/2024 14:15", "04/10/2024 15:05", "04/10/2024 16:05", "04/10/2024 16:55",
+                        "04/17/2024 14:15", "04/17/2024 15:05", "04/17/2024 16:05", "04/17/2024 16:55"];
+    var Stunden_FTBT = ["03/14/2024 09:40", "04/04/2024 09:40", "04/11/2024 09:40", "04/18/2024 09:40"];
+    var Stunden_WEPT = ["03/15/2024 08:50", "03/15/2024 09:40", "03/15/2024 10:35", "03/15/2024 11:40", "03/15/2024 12:35", "03/15/2024 13:25",
+                        "03/22/2024 08:50", "03/22/2024 09:40", "03/22/2024 10:35", "03/22/2024 11:40", "03/22/2024 12:35", "03/22/2024 13:25",
+                        "04/05/2024 08:50", "04/05/2024 09:40", "04/05/2024 10:35", "04/05/2024 11:40", "04/05/2024 12:35", "04/05/2024 13:25",
+                        "04/12/2024 08:50", "04/12/2024 09:40", "04/12/2024 10:35", "04/12/2024 11:40", "04/12/2024 12:35", "04/12/2024 13:25"];    
+
+    function IstEinFreierTag(DateString)
+    {
+        var IstKeinFreierTag = true;
+
+        var Suchdatum = new Date(DateString);
+
+        for (var i = 0; i < holidays.length; i++)
+        {
+            var frei = new Date(holidays[i]);
+            if (frei >= new Date())
+            {
+                if(Suchdatum == frei)
+                {
+                    IstKeinFreierTag = false;
+                }
+            }
+        } 
+
+        return IstKeinFreierTag;
+    }
 
     function calculateDays()
     {
-        // Daten für freie Tage und Tests
-        var holidays = ["03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "04/08/2024", "04/15/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024", "04/26/2024"];
-        var tests = ["03/11/2024", "03/14/2024", "03/21/2024", "04/03/2024", "04/10/2024", "04/16/2024"];
-
+        
         // Aktuelles Datum
         var currentDate = new Date();
+
+
+        var AnzahlStundenGesamt = 0;
+
+        for (var i = 0; i < Stunden_D.length; i++)
+        {
+            var Stunde = new Date(Stunden_D[i]);
+            if (Stunde >= currentDate)
+            {
+                if(!IstEinFreierTag(Stunde))
+                {
+                    AnzahlStundenGesamt++;
+                }
+            }
+        }
+
+        alert(AnzahlStundenGesamt)
 
 
         // Ziel-Datum für den Schulabschluss
