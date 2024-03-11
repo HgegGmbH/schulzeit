@@ -7,6 +7,7 @@
     <title>Schulabschluss Countdown</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
 
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3133/3133158.png" type="image/x-icon">
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/3133/3133158.png" type="image/x-icon">
@@ -45,24 +46,31 @@
         
         
         <hr><br>
-
+        
         <strong>Einzelne Schulstunden bis zum Unterrichtsende:</strong><br><br>
-        Stunden in Deutsch: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_D_Label"></span>?</strong><br>
-        Stunden in BESP: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_BESP_Label"></span>?</strong><br>
-        Stunden in MEEM: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_MEEM_Label"></span>?</strong><br>
-        Stunden in ELV: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ELV_Label"></span>?</strong><br>
-        Stunden in ELV Nachmittag: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ELV_NM_Label"></span>?</strong><br>
-        Stunden in MTSA: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_MTSA_Label"></span>?</strong><br>
-        Stunden in AIIT: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_AIIT_Label"></span>?</strong><br>
-        Stunden in RK: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_RK_Label"></span>?</strong><br>
-        Stunden in ETE GirN: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ETE_GirN_Label"></span>?</strong><br>
-        Stunden in ETE DurP: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_ETE_DurP_Label"></span>?</strong><br>
-        Stunden in Englisch: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_E_Label"></span>?</strong><br>
-        Stunden in Mathe: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_AM_Label"></span>?</strong><br>
-        Stunden in KOP: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_KOP_Label"></span>?</strong><br>
-        Stunden in FTBT: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_FTBT_Label"></span>?</strong><br>
-        Stunden in WEPT: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_WEPT_Label"></span>?</strong><br>
-        Stunden in WIR: <strong style="font-size: x-large; color: mediumseagreen;"><span id="Stunden_WIR_Label"></span>?</strong><br>
+        Deitsch: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_D_Label"></span></strong><br>
+        Mathe: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_AM_Label"></span></strong><br>
+        Englisch: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_E_Label"></span></strong><br>
+        Mechanik: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_MEEM_Label"></span></strong><br>
+        MTSA (GirN): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_MTSA_Label"></span></strong><br>
+        ETE (GirN): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ETE_GirN_Label"></span></strong><br>
+        ETE (Peter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ETE_DurP_Label"></span></strong><br>
+        ELV (Peter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ELV_Label"></span></strong><br>
+        ELV NM (Peter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ELV_NM_Label"></span></strong><br>
+        Pitterle: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_FTBT_Label"></span></strong><br>
+        Luftpumpe: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_WIR_Label"></span></strong><br>
+        Lindspeter: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_AIIT_Label"></span></strong><br>       
+        Birgit: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_RK_Label"></span></strong><br>
+        KOP (Walter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_KOP_Label"></span></strong><br>     
+        Werkstott: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_WEPT_Label"></span></strong><br>
+        Turnen: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_BESP_Label"></span></strong><br><br>
+
+        Anzahl Stunden gesamt: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="AnzahlStundenGesamt_Label"></span></strong><br><br>
+
+        <strong>Bis zum Unterrichtsende noch ...</strong><br>
+        <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_HueW_Label"></span></strong> Stunden Walter<br>
+        <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_GirN_Label"></span></strong> Stunden GirN<br>
+        <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_DurP_Label"></span></strong> Stunden Peter<br>
 
         <br><br><br><br><br><br>
     </div>
@@ -73,7 +81,7 @@
     </div>
     <br>
 
-    
+   
 </body>
 </html>
 
@@ -211,23 +219,26 @@
     }
 
     // Daten für freie Tage und Tests
-    var holidays = ["03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "04/08/2024", "04/12/2024", "04/15/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024", "04/26/2024"];
+
+    var AnzahlStundenGesamt = 0;
+    
+    var holidays = ["03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "04/08/2024", "04/15/2024", "04/19/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024"];
     var tests = ["03/14/2024", "03/21/2024", "04/03/2024", "04/10/2024", "04/15/2024"];
 
-    var Stunden_D = ["03/11/2024 11:40", "03/13/2024 12:35", "03/20/2024 12:35", "04/03/2024 12:35", "04/10/2024 12:35", "04/17/2024 12:35"];
-    var Stunden_BESP = ["03/11/2024 14:15", "03/11/2024 15:05"];
+    var Stunden_BESP = [];
+    var Stunden_D = ["04/08/2024 12:35", "03/13/2024 12:35", "03/20/2024 12:35", "04/03/2024 12:35", "04/10/2024 12:35", "04/17/2024 12:35"];
     var Stunden_WIR = ["04/02/2024 09:40", "04/09/2024 09:40", "04/16/2024 09:40"];
     var Stunden_MEEM = ["03/21/2024 12:35", "04/02/2024 08:50", "04/04/2024 12:35", "04/09/2024 08:50", "04/11/2024 12:35", "04/16/2024 08:50", "04/18/2024 12:35"];
-    var Stunden_ELV = ["03/12/2024 10:35", "04/02/2024 10:35", "04/09/2024 10:35", "04/16/2024 10:35"];
+    var Stunden_ELV = ["03/12/2024 10:35", "03/14/2024 11:40", "04/02/2024 10:35", "04/09/2024 10:35", "04/16/2024 10:35"];
     var Stunden_ELV_NM = ["03/21/2024 14:15", "03/21/2024 15:05", "04/04/2024 14:15", "04/04/2024 15:05", "04/18/2024 14:15", "04/18/2024 15:05"];
-    var Stunden_MTSA = ["03/12/2024 11:40", "03/13/2024 08:50", "03/20/2024 08:50", "01/04/2024 11:40", "04/03/2024 08:50", "04/09/2024 11:40", "04/10/2024 08:50", "04/16/2024 11:40", "04/17/2024 08:50"];
+    var Stunden_MTSA = ["03/12/2024 11:40", "03/13/2024 08:50", "03/20/2024 08:50", "04/02/2024 11:40", "04/03/2024 08:50", "04/09/2024 11:40", "04/10/2024 08:50", "04/16/2024 11:40", "04/17/2024 08:50"];
     var Stunden_AIIT = ["03/14/2024 10:35", "03/21/2024 10:35", "04/02/2024 12:35", "04/04/2024 10:35", "04/09/2024 12:35", "04/11/2024 10:35", "04/16/2024 12:35", "04/18/2024 10:35"];
     var Stunden_RK = ["03/12/2024 13:25", "04/02/2024 13:25", "04/08/2024 09:40", "04/09/2024 13:25", "04/15/2024 09:40", "04/16/2024 13:25"];
     var Stunden_ETE_GirN = ["03/13/2024 09:40", "03/20/2024 09:40", "04/03/2024 09:40", "04/10/2024 09:40", "04/17/2024 09:40"];
-    var Stunden_ETE_DurP = ["03/14/2024 11:40", "03/21/2024 11:40", "04/04/2024 11:40", "04/11/2024 11:40", "0/18/2024 11:40"];
-    var Stunden_E = ["03/12/2024 12:35", "03/13/2024 10:35", "03/20/2024 10:35", "03/21/2024 08:50", "03/21/2024 09:40", "03/21/2024 10:35", "04/03/2024 10:35", "04/10/2024 10:35", "04/17/2024 10:35"];
-    var Stunden_AM = ["03/13/2024 11:40", "03/14/2024 08:50", "03/20/2024 11:40", "04/03/2024 11:40", "04/04/2024 08:50", "04/10/2024 11:40", "04/11/2024 08:50", "04/17/2024 11:40", "04/18/2024 08:50"];
-    var Stunden_KOP  = ["03/13/2024 14:15", "03/13/2024 15:05", "03/13/2024 16:05", "03/13/2024 16:55",
+    var Stunden_ETE_DurP = ["03/21/2024 11:40", "04/04/2024 11:40", "04/11/2024 11:40", "0/18/2024 11:40"];
+    var Stunden_E = ["03/12/2024 12:35", "03/13/2024 10:35", "03/20/2024 10:35", "03/21/2024 08:50", "03/21/2024 09:40", "03/21/2024 10:35", "04/03/2024 10:35", "04/17/2024 10:35"];
+    var Stunden_AM = ["03/13/2024 11:40", "03/14/2024 08:50", "03/20/2024 11:40", "04/03/2024 11:40", "04/04/2024 08:50", "04/10/2024 10:35", "04/10/2024 11:40", "04/11/2024 08:50", "04/17/2024 11:40", "04/18/2024 08:50"];
+    var Stunden_KOP  = ["03/13/2024 15:05", "03/13/2024 16:05", "03/13/2024 16:55",
                         "03/20/2024 14:15", "03/20/2024 15:05", "03/20/2024 16:05", "03/20/2024 16:55",
                         "04/03/2024 14:15", "04/03/2024 15:05", "04/03/2024 16:05", "04/03/2024 16:55",
                         "04/10/2024 14:15", "04/10/2024 15:05", "04/10/2024 16:05", "04/10/2024 16:55",
@@ -243,45 +254,108 @@
         var IstKeinFreierTag = true;
 
         var Suchdatum = new Date(DateString);
+        Suchdatum.setHours(0)
+        Suchdatum.setMinutes(0)
+        Suchdatum.setSeconds(0)
 
         for (var i = 0; i < holidays.length; i++)
         {
             var frei = new Date(holidays[i]);
             if (frei >= new Date())
             {
-                if(Suchdatum == frei)
+                if(Suchdatum.getTime() == frei.getTime())
                 {
                     IstKeinFreierTag = false;
                 }
             }
-        } 
+        }
 
-        return IstKeinFreierTag;
+        return !IstKeinFreierTag;
     }
 
-    function calculateDays()
+    function SchulstundenZaehlen(ListeMitStundenDesFaches, AnzahlStundenGesamtWeiterzaehlen)
     {
-        
-        // Aktuelles Datum
         var currentDate = new Date();
 
+        var returnValue = 0;
 
-        var AnzahlStundenGesamt = 0;
-
-        for (var i = 0; i < Stunden_D.length; i++)
+        for (var i = 0; i < ListeMitStundenDesFaches.length; i++)
         {
-            var Stunde = new Date(Stunden_D[i]);
+            var Stunde = new Date(ListeMitStundenDesFaches[i]);
             if (Stunde >= currentDate)
             {
                 if(!IstEinFreierTag(Stunde))
                 {
-                    AnzahlStundenGesamt++;
+                    if(AnzahlStundenGesamtWeiterzaehlen)
+                    {
+                        AnzahlStundenGesamt++;
+                    }
+                    
+                    returnValue++;
                 }
             }
         }
 
-        alert(AnzahlStundenGesamt)
+        return returnValue;
+    }
 
+    function calculateDays()
+    {
+        // Aktuelles Datum
+        var currentDate = new Date();
+
+        var AnzahlStunden_D = 0
+        var AnzahlStunden_BESP = 0
+        var AnzahlStunden_WIR = 0
+        var AnzahlStunden_MEEM = 0
+        var AnzahlStunden_ELV = 0
+        var AnzahlStunden_ELV_NM = 0
+        var AnzahlStunden_MTSA = 0
+        var AnzahlStunden_AIIT = 0
+        var AnzahlStunden_RK = 0
+        var AnzahlStunden_ETE_GirN = 0
+        var AnzahlStunden_ETE_DurP = 0
+        var AnzahlStunden_E = 0
+        var AnzahlStunden_AM = 0
+        var AnzahlStunden_KOP = 0
+        var AnzahlStunden_FTBT = 0
+        var AnzahlStunden_WEPT = 0
+
+        
+        document.getElementById("Stunden_D_Label").innerHTML = SchulstundenZaehlen(Stunden_D, true)
+        document.getElementById("Stunden_BESP_Label").innerHTML = SchulstundenZaehlen(Stunden_BESP, true)
+        document.getElementById("Stunden_WIR_Label").innerHTML = SchulstundenZaehlen(Stunden_WIR, true)
+        document.getElementById("Stunden_MEEM_Label").innerHTML = SchulstundenZaehlen(Stunden_MEEM, true)
+        document.getElementById("Stunden_ELV_Label").innerHTML = SchulstundenZaehlen(Stunden_ELV, true)
+        document.getElementById("Stunden_ELV_NM_Label").innerHTML = SchulstundenZaehlen(Stunden_ELV_NM, true)
+        document.getElementById("Stunden_MTSA_Label").innerHTML = SchulstundenZaehlen(Stunden_MTSA, true)
+        document.getElementById("Stunden_AIIT_Label").innerHTML = SchulstundenZaehlen(Stunden_AIIT, true)
+        document.getElementById("Stunden_RK_Label").innerHTML = SchulstundenZaehlen(Stunden_RK, true)
+        document.getElementById("Stunden_ETE_GirN_Label").innerHTML = SchulstundenZaehlen(Stunden_ETE_GirN, true)
+        document.getElementById("Stunden_ETE_DurP_Label").innerHTML = SchulstundenZaehlen(Stunden_ETE_DurP, true)
+        document.getElementById("Stunden_E_Label").innerHTML = SchulstundenZaehlen(Stunden_E, true)
+        document.getElementById("Stunden_AM_Label").innerHTML = SchulstundenZaehlen(Stunden_AM, true)
+        document.getElementById("Stunden_KOP_Label").innerHTML = SchulstundenZaehlen(Stunden_KOP, true)
+        document.getElementById("Stunden_FTBT_Label").innerHTML = SchulstundenZaehlen(Stunden_FTBT, true)
+        document.getElementById("Stunden_WEPT_Label").innerHTML = SchulstundenZaehlen(Stunden_WEPT, true)
+
+        document.getElementById("Stunden_HueW_Label").innerHTML = SchulstundenZaehlen(Stunden_MEEM, false) + SchulstundenZaehlen(Stunden_KOP, false)
+        document.getElementById("Stunden_DurP_Label").innerHTML = SchulstundenZaehlen(Stunden_ELV, false) + SchulstundenZaehlen(Stunden_ELV_NM, false) + SchulstundenZaehlen(Stunden_ETE_DurP, false)
+
+        var StundenGirN = SchulstundenZaehlen(Stunden_MTSA, false) + SchulstundenZaehlen(Stunden_ETE_GirN, false);
+
+        if(currentDate <= new Date("04/12/2024 13:15"))
+        {
+            StundenGirN += 6;
+        }
+
+        document.getElementById("Stunden_GirN_Label").innerHTML = StundenGirN;
+
+        document.getElementById("AnzahlStundenGesamt_Label").innerHTML = AnzahlStundenGesamt
+
+
+
+        
 
         // Ziel-Datum für den Schulabschluss
         var endDate = new Date(2024, 6-1, 14, 0,0,0);//new Date("06/14/2024");
