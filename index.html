@@ -72,9 +72,13 @@
         <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_GirN_Label"></span></strong> Stunden GirN<br>
         <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_DurP_Label"></span></strong> Stunden Peter<br><br>
 
+        Aktuelle Stunde:<br><span id="AktuelleStunde_Label"></span><br><br>
+
+        Nach dieser Stunde noch<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);" id="NochStundenHeute_Label"></strong><br>Stunden heute<br><br>
+
         Nächste Stunde:<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);"><span id="NaechsteStunde_Label"></span></strong><br><br>
 
-        Aktuelle Stunde:<br><span id="AktuelleStunde_Label"></span><br>
+        
         
         <br><br><br><br><br><br>
     </div>
@@ -227,7 +231,7 @@
     var AnzahlStundenGesamt = 0;
     
     var holidays = ["03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "04/08/2024", "04/15/2024", "04/19/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024"];
-    var tests = ["03/21/2024", "04/03/2024", "04/10/2024", "04/15/2024"];
+    var tests = ["04/08/2024", "04/08/2024", "04/10/2024", "04/15/2024"];
 
     var Stunden_BESP = [];
     var Stunden_D = ["04/08/2024 12:35", "03/13/2024 12:35", "03/20/2024 12:35", "04/03/2024 12:35", "04/10/2024 12:35", "04/17/2024 12:35"];
@@ -363,8 +367,8 @@
 
         document.getElementById("AnzahlStundenGesamt_Label").innerHTML = AnzahlStundenGesamt
 
-
-  
+        var NochStundenHeute = 0;
+        var AktuelleZeit = currentDate.getTime();
 
         for(var i = 0; i < AlleStunden.length; i++)
         {
@@ -375,7 +379,6 @@
 
             var Endzeit = DieseStunde.getTime();
             var Startzeit = DieseStunde.getTime() - 50*60*1000;
-            var AktuelleZeit = currentDate.getTime();
 
             if(AktuelleZeit >= Startzeit && AktuelleZeit <= Endzeit)
             {
@@ -385,9 +388,38 @@
                 AktuelleStundeInfo = `(noch ${VerbleibendeMinuten.toFixed(1)} Minuten)<br>(${ProzentVorbei.toFixed(0)}% abgeschlossen)`;
             }
 
+            if(currentDate.getDate() == DieseStunde.getDate() && Startzeit > AktuelleZeit)
+            {
+                NochStundenHeute ++;
+            }
+
             if(AktuelleZeit+50*60*1000 >= Startzeit && AktuelleZeit+50*60*1000 <= Endzeit)
             {
                 NaechsteStunde = FachName;
+            }
+        }
+
+        if(AktuelleStunde == "" && NochStundenHeute > 0)
+        {
+            if(currentDate.getHours() == 12 || currentDate.getHours() == 13)
+            {
+                AktuelleStunde = "Mittagspause";
+            }
+            else
+            {
+                AktuelleStunde = "Pause";
+            }
+        }
+
+        if(NaechsteStunde == "" && NochStundenHeute > 0)
+        {
+            if(currentDate.getHours() == 12 || (currentDate.getHours() == 11 && currentDate.getMinutes() >= 45))
+            {
+                NaechsteStunde = "Mittagspause";
+            }
+            else
+            {
+                NaechsteStunde = "Pause";
             }
         }
 
@@ -396,6 +428,7 @@
 
         document.getElementById("AktuelleStunde_Label").innerHTML = `<strong style="font-size: xx-large; color: rgb(0, 238, 255);">${AktuelleStunde}</strong><br>${AktuelleStundeInfo}`;
         document.getElementById("NaechsteStunde_Label").innerHTML = NaechsteStunde;
+        document.getElementById("NochStundenHeute_Label").innerHTML = NochStundenHeute;
 
         // Ziel-Datum für den Schulabschluss
         var endDate = new Date(2024, 6-1, 14, 0,0,0);//new Date("06/14/2024");
