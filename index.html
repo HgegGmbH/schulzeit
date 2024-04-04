@@ -72,14 +72,26 @@
         <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_GirN_Label"></span></strong> Stunden GirN<br>
         <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_DurP_Label"></span></strong> Stunden Peter<br><br>
 
-        Aktuelle Stunde:<br><span id="AktuelleStunde_Label"></span><br><br>
+        <div id="StundenTagesaktuellDIV">
+            Aktuelle Stunde:<br><span id="AktuelleStunde_Label"></span><br><br>
 
-        Nach dieser Stunde noch<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);" id="NochStundenHeute_Label"></strong><br>Stunden heute<br><br>
+            Nach dieser Stunde noch<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);" id="NochStundenHeute_Label"></strong><br>Stunde(n) heute<br><br>
+    
+            Nächste Stunde:<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);"><span id="NaechsteStunde_Label"></span></strong><br><br>
+    
+            <hr><br><br>
+    
+            <span style="font-size: x-large;">Stundenplan Heute:</span><br><br>
+                    
+            <table align="center" style="text-align: left" id="StundenplanTabelle">
+                <tr>
+                    <th><strong>Uhrzeit</strong></th>
+                    <th></th>
+                    <th><strong>Fach</strong></th>
+                </tr>
+            </table>
+        </div>
 
-        Nächste Stunde:<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);"><span id="NaechsteStunde_Label"></span></strong><br><br>
-
-        
-        
         <br><br><br><br><br><br>
     </div>
 
@@ -95,6 +107,7 @@
 
 
 <script>
+    var currentDate = new Date();
     document.body.style.fontFamily = 'Russo One, sans-serif';
 
     GetTemperature();
@@ -168,7 +181,7 @@
 
                     `;                   
                                         
-                    var HeutigesDatum = new Date();
+                    var HeutigesDatum = currentDate;
                     if(HeutigesDatum.getDay() != 0 && HeutigesDatum.getDay() != 6)
                     {
                         if(temperature <= -10)
@@ -230,8 +243,8 @@
 
     var AnzahlStundenGesamt = 0;
     
-    var holidays = ["03/18/2024", "03/19/2024", "03/25/2024", "03/26/2024", "03/27/2024", "03/28/2024", "03/29/2024", "04/01/2024", "04/08/2024", "04/15/2024", "04/19/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024"];
-    var tests = ["04/08/2024", "04/08/2024", "04/10/2024", "04/15/2024"];
+    var holidays = ["04/08/2024", "04/15/2024", "04/19/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024"];
+    var tests = ["04/09/2024", "04/09/2024", "04/10/2024", "04/15/2024"];
 
     var Stunden_BESP = [];
     var Stunden_D = ["04/08/2024 12:35", "03/13/2024 12:35", "03/20/2024 12:35", "04/03/2024 12:35", "04/10/2024 12:35", "04/17/2024 12:35"];
@@ -240,11 +253,11 @@
     var Stunden_ELV = ["04/02/2024 10:35", "04/09/2024 10:35", "04/16/2024 10:35"];
     var Stunden_ELV_NM = ["03/21/2024 14:15", "03/21/2024 15:05", "04/18/2024 14:15", "04/18/2024 15:05"];
     var Stunden_MTSA = ["03/12/2024 11:40", "03/13/2024 08:50", "03/20/2024 08:50", "04/02/2024 11:40", "04/03/2024 08:50", "04/09/2024 11:40", "04/10/2024 08:50", "04/16/2024 11:40", "04/17/2024 08:50"];
-    var Stunden_AIIT = ["03/14/2024 10:35", "03/21/2024 10:35", "04/02/2024 12:35", "04/04/2024 10:35", "04/09/2024 12:35", "04/11/2024 10:35", "04/16/2024 12:35", "04/18/2024 10:35"];
+    var Stunden_AIIT = ["03/14/2024 10:35", "03/21/2024 10:35", "04/02/2024 12:35", "04/04/2024 10:35", "04/11/2024 10:35", "04/16/2024 12:35", "04/18/2024 10:35"];
     var Stunden_RK = ["03/12/2024 13:25", "04/02/2024 13:25", "04/08/2024 09:40", "04/09/2024 13:25", "04/15/2024 09:40", "04/16/2024 13:25"];
     var Stunden_ETE_GirN = ["03/13/2024 09:40", "03/20/2024 09:40", "04/03/2024 09:40", "04/10/2024 09:40", "04/17/2024 09:40"];
     var Stunden_ETE_DurP = ["03/21/2024 11:40", "04/11/2024 11:40", "0/18/2024 11:40"];
-    var Stunden_E = ["03/12/2024 12:35", "03/13/2024 10:35", "03/20/2024 10:35", "03/21/2024 08:50", "03/21/2024 09:40", "03/21/2024 10:35", "04/03/2024 10:35", "04/17/2024 10:35"];
+    var Stunden_E = ["04/03/2024 10:35", "04/09/2024 12:35", "04/17/2024 10:35"];
     var Stunden_AM = ["03/13/2024 11:40", "03/14/2024 08:50", "03/20/2024 11:40", "04/03/2024 11:40", "04/04/2024 08:50", "04/10/2024 10:35", "04/10/2024 11:40", "04/11/2024 08:50", "04/17/2024 11:40", "04/18/2024 08:50"];
     var Stunden_KOP  = ["03/13/2024 15:05", "03/13/2024 16:05", "03/13/2024 16:55",
                         "03/20/2024 14:15", "03/20/2024 15:05", "03/20/2024 16:05", "03/20/2024 16:55",
@@ -258,6 +271,7 @@
                         "04/12/2024 08:50", "04/12/2024 09:40", "04/12/2024 10:35", "04/12/2024 11:40", "04/12/2024 12:35", "04/12/2024 13:25"];   
                         
     var AlleStunden = []
+    var AlleStundenHeuteNoch = []
     var AktuelleStunde = "";
     var AktuelleStundeInfo = "";
     var NaechsteStunde = "";
@@ -274,7 +288,7 @@
         for (var i = 0; i < holidays.length; i++)
         {
             var frei = new Date(holidays[i]);
-            if (frei >= new Date())
+            //if (frei >= currentDate)
             {
                 if(Suchdatum.getTime() == frei.getTime())
                 {
@@ -288,13 +302,19 @@
 
     function SchulstundenZaehlen(ListeMitStundenDesFaches, AnzahlStundenGesamtWeiterzaehlen, FachName)
     {
-        var currentDate = new Date();
-
         var returnValue = 0;
 
         for (var i = 0; i < ListeMitStundenDesFaches.length; i++)
         {
             var Stunde = new Date(ListeMitStundenDesFaches[i]);
+            if(!IstEinFreierTag(Stunde))
+            {
+                if(Stunde.getDate() == currentDate.getDate() && Stunde.getMonth() == 3 && AnzahlStundenGesamtWeiterzaehlen)
+                {
+                    AlleStundenHeuteNoch.push(`${ListeMitStundenDesFaches[i]};${FachName}`)
+                }
+            }
+
             if (Stunde >= currentDate)
             {
                 if(!IstEinFreierTag(Stunde))
@@ -315,9 +335,6 @@
 
     function calculateDays()
     {
-        // Aktuelles Datum
-        var currentDate = new Date();
-
         var AnzahlStunden_D = 0
         var AnzahlStunden_BESP = 0
         var AnzahlStunden_WIR = 0
@@ -429,6 +446,56 @@
         document.getElementById("AktuelleStunde_Label").innerHTML = `<strong style="font-size: xx-large; color: rgb(0, 238, 255);">${AktuelleStunde}</strong><br>${AktuelleStundeInfo}`;
         document.getElementById("NaechsteStunde_Label").innerHTML = NaechsteStunde;
         document.getElementById("NochStundenHeute_Label").innerHTML = NochStundenHeute;
+
+        var StundenplanTabelle = document.getElementById("StundenplanTabelle");
+        StundenplanTabelle.innerHTML = "";
+
+        AlleStundenHeuteNoch.sort();
+        console.log(AlleStundenHeuteNoch)
+        for(var i = 0; i < AlleStundenHeuteNoch.length; i++)
+        {
+            var ZeitString = "";
+            var ColorString = "";
+            var HakenBildString = "";
+            
+            if(i == 0){ZeitString = "08:00 - 08:50"}
+            else if(i == 1){ZeitString = "08:50 - 09:40"}
+            else if(i == 2){ZeitString = "09:40 - 10:35"}
+            else if(i == 3){ZeitString = "10:50 - 11:40"}
+            else if(i == 4){ZeitString = "11:45 - 12:35"}
+            else if(i == 5){ZeitString = "12:35 - 13:25"}
+            else if(i == 6){ZeitString = "13:25 - 14:15"}
+            else if(i == 7){ZeitString = "14:15 - 15:05"}
+            else if(i == 8){ZeitString = "15:15 - 16:05"}
+            else if(i == 9){ZeitString = "16:05 - 16:55"}
+
+            if(new Date(AlleStundenHeuteNoch[i].split(";")[0]).getTime() < currentDate)
+            {
+                ColorString = "mediumseagreen";
+                HakenBildString = `<img src="https://i.imgur.com/weFWmUm_d.webp?maxwidth=760&fidelity=grand" style="width: 17px;">`;
+            }
+            else
+            {
+                ColorString = "rgb(0, 238, 255)";
+                HakenBildString = "";
+            }
+
+            StundenplanTabelle.innerHTML +=
+            `
+            <tr>
+                <td>${ZeitString}:</td>
+                <td></td>
+                <td style="color: ${ColorString};">${AlleStundenHeuteNoch[i].split(";")[1]} ${HakenBildString}</td>
+            </tr>
+            `
+        }
+        
+
+        if(IstEinFreierTag(currentDate))
+        {
+            document.getElementById("StundenTagesaktuellDIV").style.display = "none"
+        }
+
 
         // Ziel-Datum für den Schulabschluss
         var endDate = new Date(2024, 6-1, 14, 0,0,0);//new Date("06/14/2024");
@@ -586,10 +653,10 @@
     setInterval(Div10ms, 5);
 
     var GesamtAnzahlSchultage = 0;
-    var AktuellerZaehlerAbwaertsSchultage = GesamtAnzahlSchultage + 120;
+    var AktuellerZaehlerAbwaertsSchultage = GesamtAnzahlSchultage + 20;
 
 
-    let interval = 50;
+    let interval = 100;
     function AbwaertsZaehler()
     {
         if(AktuellerZaehlerAbwaertsSchultage > GesamtAnzahlSchultage)
