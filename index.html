@@ -244,7 +244,7 @@
     var AnzahlStundenGesamt = 0;
     
     var holidays = ["04/15/2024", "04/17/2024", "04/19/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024"];
-    var tests = ["04/15/2024"];
+    var tests = ["04/16/2024"];
 
     var Stunden_BESP = [];
     var Stunden_D = ["04/08/2024 12:35", "03/13/2024 12:35", "03/20/2024 12:35", "04/03/2024 12:35", "04/10/2024 12:35", "04/17/2024 12:35"];
@@ -374,11 +374,6 @@
         document.getElementById("Stunden_DurP_Label").innerHTML = SchulstundenZaehlen(Stunden_ELV, false) + SchulstundenZaehlen(Stunden_ELV_NM, false) + SchulstundenZaehlen(Stunden_ETE_DurP, false)
 
         var StundenGirN = SchulstundenZaehlen(Stunden_MTSA, false) + SchulstundenZaehlen(Stunden_ETE_GirN, false);
-
-        if(currentDate <= new Date("04/12/2024 13:15"))
-        {
-            StundenGirN += 6;
-        }
 
         document.getElementById("Stunden_GirN_Label").innerHTML = StundenGirN;
 
