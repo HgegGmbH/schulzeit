@@ -21,7 +21,6 @@
         <strong>Nie wieder "Unterricht" in</strong>
         <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalDaysUnterrichtsende"></span></strong> Tage, bzw.</p>
         <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="schoolDays"></span></strong> Schultage (ohne heute)!</p>
-        <p>Noch <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalTests"></span></strong> Teste bis zur Freiheit!</p>
         <hr>
         <br>
         <strong>Freiheit in ...</strong>
@@ -244,7 +243,7 @@
     var AnzahlStundenGesamt = 0;
     
     var holidays = ["04/15/2024", "04/17/2024", "04/19/2024", "04/22/2024", "04/23/2024", "04/24/2024", "04/25/2024"];
-    var tests = ["04/16/2024"];
+    var tests = [];
 
     var Stunden_BESP = [];
     var Stunden_D = ["04/08/2024 12:35", "03/13/2024 12:35", "03/20/2024 12:35", "04/03/2024 12:35", "04/10/2024 12:35", "04/17/2024 12:35"];
@@ -560,7 +559,6 @@
         document.getElementById("totalDays").textContent = totalDays;
         GesamtAnzahlSchultage = schoolDays;
         //document.getElementById("schoolDays").textContent = schoolDays;
-        document.getElementById("totalTests").textContent = totalTests;
         document.getElementById("totalDaysUnterrichtsende").textContent = totalDaysUnterrichtsende;
     }
 
