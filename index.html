@@ -15,21 +15,20 @@
 <body onload="calculateDays()" style="background-color: rgb(19, 19, 19); color: rgb(209, 209, 209); text-align: center;" id="body">    
 
     <br>
-    <img src="https://i.imgur.com/MAkSCo5.png" style="width: 300px;" alt="">
     
-    <div id="d1">            
-        <strong>Nie wieder "Unterricht" in</strong>
-        <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalDaysUnterrichtsende"></span></strong> Tage, bzw.</p>
-        <p><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="schoolDays"></span></strong> Schultage (ohne heute)!</p>
-        <hr>
-        <br>
+    
+    
+    
+    <div id="d1">      
+        <img src="https://i.imgur.com/MAkSCo5.png" style="width: 300px;" alt="normal">      
+        <br><br><br>
         <strong>Freiheit in ...</strong>
         <p><strong style="font-size: x-large; color: mediumseagreen"><span id="totalDays"></span></strong> Tage (ohne heute)!</p>
         <br>
         <hr>
         <br>
         <strong>Und wennis gor nimma dowortisch ...</strong>
-        <p>Nie wieder Unterricht in<br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalSecondsUnterrichtsende"></span></strong> Sekunden!<br><br>Prozent abgeschlossen:<br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalProzentUnterrichtsende"></span></strong></p><br>
+        <p style="display: none;">Nie wieder Unterricht in<br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalSecondsUnterrichtsende"></span></strong> Sekunden!<br><br>Prozent abgeschlossen:<br><strong style="font-size: x-large; color: rgb(224, 140, 30);"><span id="totalProzentUnterrichtsende"></span></strong></p><br>
         <p>Freiheit in<br><strong style="font-size: x-large; color: mediumseagreen;"><span id="totalSecondsEndeKomplett"></span></strong> Sekunden!<br><br>Prozent abgeschlossen:<br><strong style="font-size: x-large; color: mediumseagreen;"><span id="totalProzentEndeKomplett"></span></strong></p>
         <br>
         <hr>
@@ -39,62 +38,14 @@
         <!--<canvas id="croppedCanvas"></canvas>-->                
         <hr><br>
         <strong id="AktuellesWetterUeberschrift">Lade Wetter ...</strong>
-        <br><hr><br>
-        <strong id="StuetzeThurntalerInfo">Abschnitt:</strong>
         <br><br>
         
-        
-        <hr><br>
-        
-        <strong>Einzelne Schulstunden bis zum Unterrichtsende:</strong><br><br>
-        Deitsch: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_D_Label"></span></strong><br>
-        Mathe: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_AM_Label"></span></strong><br>
-        Englisch: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_E_Label"></span></strong><br>
-        Mechanik: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_MEEM_Label"></span></strong><br>
-        MTSA (GirN): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_MTSA_Label"></span></strong><br>
-        ETE (GirN): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ETE_GirN_Label"></span></strong><br>
-        ETE (Peter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ETE_DurP_Label"></span></strong><br>
-        ELV (Peter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ELV_Label"></span></strong><br>
-        ELV NM (Peter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_ELV_NM_Label"></span></strong><br>
-        Pitterle: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_FTBT_Label"></span></strong><br>
-        Luftpumpe: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_WIR_Label"></span></strong><br>
-        Lindspeter: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_AIIT_Label"></span></strong><br>       
-        Birgit: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_RK_Label"></span></strong><br>
-        KOP (Walter): <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_KOP_Label"></span></strong><br>     
-        Werkstott: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_WEPT_Label"></span></strong><br>
-        Turnen: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_BESP_Label"></span></strong><br><br>
-
-        Anzahl Stunden gesamt: <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="AnzahlStundenGesamt_Label"></span></strong><br><br>
-
-        <strong>Bis zum Unterrichtsende noch ...</strong><br>
-        <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_HueW_Label"></span></strong> Stunden Walter<br>
-        <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_GirN_Label"></span></strong> Stunden GirN<br>
-        <strong style="font-size: x-large; color: rgb(224, 140, 30);;"><span id="Stunden_DurP_Label"></span></strong> Stunden Peter<br><br>
-
-        <div id="StundenTagesaktuellDIV">
-            Aktuelle Stunde:<br><span id="AktuelleStunde_Label"></span><br><br>
-
-            Nach dieser Stunde noch<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);" id="NochStundenHeute_Label"></strong><br>Stunde(n) heute<br><br>
     
-            Nächste Stunde:<br><strong style="font-size: xx-large; color: rgb(0, 238, 255);"><span id="NaechsteStunde_Label"></span></strong><br><br>
-    
-            <hr><br><br>
-    
-            <span style="font-size: x-large;">Stundenplan Heute:</span><br><br>
-                    
-            <table align="center" style="text-align: left" id="StundenplanTabelle">
-                <tr>
-                    <th><strong>Uhrzeit</strong></th>
-                    <th></th>
-                    <th><strong>Fach</strong></th>
-                </tr>
-            </table>
-        </div>
-
         <br><br><br><br><br><br>
     </div>
 
     <div id="d2" style="display: none;">
+        <img src="https://i.imgur.com/EpOaioB.png" style="width: 300px;" alt="durchgestrichen">
         <br><br><br>
         <p><strong style="font-size: x-large; color: mediumseagreen"><span id="totalDays">GRATULIERE!<br><br></span></strong>Hitz hoschis endlich umma! Und hitz schau zui endlich ausnzikemm fa der elendigen Drecksbude fa dem gschissenen Clownsverein fa dem goschtign!!</p>
     </div>
@@ -351,32 +302,11 @@
         var AnzahlStunden_FTBT = 0
         var AnzahlStunden_WEPT = 0
 
-        
-        document.getElementById("Stunden_D_Label").innerHTML = SchulstundenZaehlen(Stunden_D, true, "D")
-        document.getElementById("Stunden_BESP_Label").innerHTML = SchulstundenZaehlen(Stunden_BESP, true, "BESP")
-        document.getElementById("Stunden_WIR_Label").innerHTML = SchulstundenZaehlen(Stunden_WIR, true, "WIR")
-        document.getElementById("Stunden_MEEM_Label").innerHTML = SchulstundenZaehlen(Stunden_MEEM, true, "MEEM")
-        document.getElementById("Stunden_ELV_Label").innerHTML = SchulstundenZaehlen(Stunden_ELV, true, "ELV")
-        document.getElementById("Stunden_ELV_NM_Label").innerHTML = SchulstundenZaehlen(Stunden_ELV_NM, true, "ELV_NM")
-        document.getElementById("Stunden_MTSA_Label").innerHTML = SchulstundenZaehlen(Stunden_MTSA, true, "MTSA")
-        document.getElementById("Stunden_AIIT_Label").innerHTML = SchulstundenZaehlen(Stunden_AIIT, true, "AIIT")
-        document.getElementById("Stunden_RK_Label").innerHTML = SchulstundenZaehlen(Stunden_RK, true, "RK")
-        document.getElementById("Stunden_ETE_GirN_Label").innerHTML = SchulstundenZaehlen(Stunden_ETE_GirN, true, "ETE_GirN")
-        document.getElementById("Stunden_ETE_DurP_Label").innerHTML = SchulstundenZaehlen(Stunden_ETE_DurP, true, "ETE_DurP")
-        document.getElementById("Stunden_E_Label").innerHTML = SchulstundenZaehlen(Stunden_E, true, "E")
-        document.getElementById("Stunden_AM_Label").innerHTML = SchulstundenZaehlen(Stunden_AM, true, "AM")
-        document.getElementById("Stunden_KOP_Label").innerHTML = SchulstundenZaehlen(Stunden_KOP, true, "KOP")
-        document.getElementById("Stunden_FTBT_Label").innerHTML = SchulstundenZaehlen(Stunden_FTBT, true, "FTBT")
-        document.getElementById("Stunden_WEPT_Label").innerHTML = SchulstundenZaehlen(Stunden_WEPT, true, "WEPT")
-
-        document.getElementById("Stunden_HueW_Label").innerHTML = SchulstundenZaehlen(Stunden_MEEM, false) + SchulstundenZaehlen(Stunden_KOP, false)
-        document.getElementById("Stunden_DurP_Label").innerHTML = SchulstundenZaehlen(Stunden_ELV, false) + SchulstundenZaehlen(Stunden_ELV_NM, false) + SchulstundenZaehlen(Stunden_ETE_DurP, false)
 
         var StundenGirN = SchulstundenZaehlen(Stunden_MTSA, false) + SchulstundenZaehlen(Stunden_ETE_GirN, false);
 
-        document.getElementById("Stunden_GirN_Label").innerHTML = StundenGirN;
 
-        document.getElementById("AnzahlStundenGesamt_Label").innerHTML = AnzahlStundenGesamt
+
 
         var NochStundenHeute = 0;
         var AktuelleZeit = currentDate.getTime();
@@ -437,12 +367,7 @@
         if(AktuelleStunde == ""){ AktuelleStunde = "Kein Unterricht"; AktuelleStundeInfo = ""}
         if(NaechsteStunde == ""){ NaechsteStunde = "Kein Unterricht" }
 
-        document.getElementById("AktuelleStunde_Label").innerHTML = `<strong style="font-size: xx-large; color: rgb(0, 238, 255);">${AktuelleStunde}</strong><br>${AktuelleStundeInfo}`;
-        document.getElementById("NaechsteStunde_Label").innerHTML = NaechsteStunde;
-        document.getElementById("NochStundenHeute_Label").innerHTML = NochStundenHeute;
 
-        var StundenplanTabelle = document.getElementById("StundenplanTabelle");
-        StundenplanTabelle.innerHTML = "";
 
         AlleStundenHeuteNoch.sort();
         console.log(AlleStundenHeuteNoch)
@@ -559,7 +484,7 @@
         document.getElementById("totalDays").textContent = totalDays;
         GesamtAnzahlSchultage = schoolDays;
         //document.getElementById("schoolDays").textContent = schoolDays;
-        document.getElementById("totalDaysUnterrichtsende").textContent = totalDaysUnterrichtsende;
+
     }
 
     var EndeKomplett = new Date(2024, 6-1, 14, 19, 0, 0);
@@ -581,7 +506,7 @@
 
         if(SekundenBisFreiheit < 0)
         {
-            document.getElementById("d2").style.display = "anzeigen";
+            document.getElementById("d2").style.display = "block";
             document.getElementById("d1").style.display = "none";
         }
         var SekundenSchuljahrUnterrichtszeit = (Math.round(((EndeSchule.getTime() - new Date(2023, 9-1, 11, 8,0,0).getTime()) / 1000) * 100) / 100);
@@ -594,77 +519,12 @@
         document.getElementById("totalProzentUnterrichtsende").innerHTML = `${ProzentInNormalformUnterrichtsende}%`;     
         document.getElementById("totalProzentEndeKomplett").innerHTML = `${((1 - totalProzentEndeKomplett) * 100).toFixed(5)}%`;
 
-        var Liftmeter = 3365.0 * ProzentInNormalformUnterrichtsende / 100.0;
-        var NaechsteStuetze = "01";
-        var NaechsteStuetzeMeter = 0;
-
-        if(Liftmeter <= 2350)
-        {
-            NaechsteStuetze = "17";
-            NaechsteStuetzeMeter = 2350 - Liftmeter;
-        }
-        else if(Liftmeter <= 2563)
-        {
-            NaechsteStuetze = "18";
-            NaechsteStuetzeMeter = 2563 - Liftmeter;
-        }
-        else if(Liftmeter <= 2711)
-        {
-            NaechsteStuetze = "19";
-            NaechsteStuetzeMeter = 2711 - Liftmeter;
-        }
-        else if(Liftmeter <= 3010)
-        {
-            NaechsteStuetze = "20";
-            NaechsteStuetzeMeter = 3010 - Liftmeter;
-        }
-        else if(Liftmeter <= 3091)
-        {
-            NaechsteStuetze = "21";
-            NaechsteStuetzeMeter = 3091 - Liftmeter;
-        }
-        else if(Liftmeter <= 3336)
-        {
-            NaechsteStuetze = "22.1";
-            NaechsteStuetzeMeter = 3336 - Liftmeter;
-        }
-        else if(Liftmeter <= 3343)
-        {
-            NaechsteStuetze = "22.2";
-            NaechsteStuetzeMeter = 3343 - Liftmeter;
-        }
-        else
-        {
-            NaechsteStuetze = "Bergstation erreicht!";
-            NaechsteStuetzeMeter = 0;
-        }
-
-        NaechsteStuetzeMeter = NaechsteStuetzeMeter.toFixed(3);
-
-        document.getElementById("StuetzeThurntalerInfo").innerHTML = `<strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>Abschnitte:</span></strong><br><br>Aktuelle Position: zwischen <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${GetVorherigeStuetze(NaechsteStuetze)}</span></strong> und <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${NaechsteStuetze}</span></strong><br>Meter bis zum Erreichen: <strong style="font-size: x-large; color: rgb(224, 140, 30);"><span>${NaechsteStuetzeMeter}</span></strong>`;
     }
     setInterval(Div10ms, 5);
 
     var GesamtAnzahlSchultage = 0;
     var AktuellerZaehlerAbwaertsSchultage = GesamtAnzahlSchultage + 20;
 
-
-    let interval = 100;
-    function AbwaertsZaehler()
-    {
-        if(AktuellerZaehlerAbwaertsSchultage > GesamtAnzahlSchultage)
-        {
-            AktuellerZaehlerAbwaertsSchultage -= 1;
-            document.getElementById("schoolDays").textContent = AktuellerZaehlerAbwaertsSchultage;  
-        }
-
-
-        interval += 3;
-
-        clearInterval(intervalId);
-        intervalId = setInterval(AbwaertsZaehler, interval);
-    }
-    let intervalId = setInterval(AbwaertsZaehler, interval);
 
     function GetVorherigeStuetze(aktuell)
     {
